@@ -1,0 +1,9 @@
+# for completing assignment
+filetype
+numpy
+pandas
+torch
+
+# for FRQs and test cases only
+matplotlib
+pytest

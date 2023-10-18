@@ -1,0 +1,46 @@
+{
+    "test_setup": {
+      "weight": "required",
+      "depends": []
+    },
+
+    "test_datasets": {
+      "weight": 1,
+      "depends": []
+    },
+    "test_trainer_basics": {
+      "weight": 1,
+      "depends": ["test_datasets"]
+    },
+    "test_model_init": {
+      "weight": 1,
+      "depends": []
+    },
+
+    "test_load_model": {
+      "weight": 1,
+      "depends": []
+    },
+    "test_save_load_model": {
+      "weight": 1,
+      "depends": ["test_load_model"]
+    },
+    "test_continue_training": {
+      "weight": 1,
+      "depends": ["test_save_load_model"]
+    },
+
+    "test_add_dataset": {
+      "weight": 2,
+      "depends": ["test_trainer_basics", "test_model_init"]
+    },
+    "test_saved_add_dataset": {
+      "weight": 1,
+      "depends": ["test_add_dataset", "test_save_load_model"]
+    },
+    "test_saved_multiply_dataset": {
+      "weight": 3,
+      "depends": ["test_trainer_basics", "test_model_init",
+                  "test_save_load_model"]
+    }
+}
