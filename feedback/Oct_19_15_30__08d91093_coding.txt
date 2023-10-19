@@ -1,0 +1,85 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-7.4.2, pluggy-1.3.0
+rootdir: /workspace
+collected 10 items
+tests/test_a_setup.py F                                                  [ 10%]
+tests/test_data.py F                                                     [ 20%]
+tests/test_model.py FFFF                                                 [ 60%]
+tests/test_save_load.py FFF                                              [ 90%]
+tests/test_trainer.py F                                                  [100%]
+=================================== FAILURES ===================================
+__________________________________ test_setup __________________________________
+>           assert fn in files, f"Please create {fn}"
+E           AssertionError: Please create jwt9656_q1.pdf
+E           assert 'jwt9656_q1.pdf' in ['.git', '.gitignore', 'README.md', 'free_response', 'hw2.ipynb', 'models', ...]
+tests/test_a_setup.py:26: AssertionError
+________________________________ test_datasets _________________________________
+>           dataset = dataset_cls(num_examples=n)
+tests/test_data.py:13:
+>       raise NotImplementedError
+E       NotImplementedError
+src/data.py:19: NotImplementedError
+_______________________________ test_model_init ________________________________
+>       model.initialize()
+tests/test_model.py:25:
+>       raise NotImplementedError
+E       NotImplementedError
+src/mlp.py:38: NotImplementedError
+_______________________________ test_add_dataset _______________________________
+>       dataset = AddDataset(num_examples=1000)
+tests/test_model.py:39:
+>       raise NotImplementedError
+E       NotImplementedError
+src/data.py:19: NotImplementedError
+____________________________ test_saved_add_dataset ____________________________
+>       assert os.path.getsize(MODEL_FN) > 0, msg
+E       AssertionError: Delete models/test_saved_add_dataset.pt and then save your model there.
+E       assert 0 > 0
+E        +  where 0 = <function getsize at 0x7ff92e791280>('models/test_saved_add_dataset.pt')
+E        +    where <function getsize at 0x7ff92e791280> = <module 'posixpath' from '/usr/local/lib/python3.9/posixpath.py'>.getsize
+E        +      where <module 'posixpath' from '/usr/local/lib/python3.9/posixpath.py'> = os.path
+tests/test_model.py:71: AssertionError
+_________________________ test_saved_multiply_dataset __________________________
+>       assert os.path.getsize(MODEL_FN) > 0, msg
+E       AssertionError: Delete models/test_saved_multiply_dataset.pt and then save your model there.
+E       assert 0 > 0
+E        +  where 0 = <function getsize at 0x7ff92e791280>('models/test_saved_multiply_dataset.pt')
+E        +    where <function getsize at 0x7ff92e791280> = <module 'posixpath' from '/usr/local/lib/python3.9/posixpath.py'>.getsize
+E        +      where <module 'posixpath' from '/usr/local/lib/python3.9/posixpath.py'> = os.path
+tests/test_model.py:111: AssertionError
+_______________________________ test_load_model ________________________________
+>       model.load_model(fn)
+tests/test_save_load.py:36:
+>       raise NotImplementedError
+E       NotImplementedError
+src/mlp.py:61: NotImplementedError
+_____________________________ test_save_load_model _____________________________
+>       dataset = AddDataset(num_examples=100)
+tests/test_save_load.py:49:
+>       raise NotImplementedError
+E       NotImplementedError
+src/data.py:19: NotImplementedError
+____________________________ test_continue_training ____________________________
+>       dataset = AddDataset(num_examples=100)
+tests/test_save_load.py:84:
+>       raise NotImplementedError
+E       NotImplementedError
+src/data.py:19: NotImplementedError
+_____________________________ test_trainer_basics ______________________________
+>       loss_before = trainer.eval(data_loader)[0]
+tests/test_trainer.py:33:
+>       raise NotImplementedError
+E       NotImplementedError
+src/trainer.py:43: NotImplementedError
+=========================== short test summary info ============================
+FAILED tests/test_a_setup.py::test_setup - AssertionError: Please create jwt9...
+FAILED tests/test_data.py::test_datasets - NotImplementedError
+FAILED tests/test_model.py::test_model_init - NotImplementedError
+FAILED tests/test_model.py::test_add_dataset - NotImplementedError
+FAILED tests/test_model.py::test_saved_add_dataset - AssertionError: Delete m...
+FAILED tests/test_model.py::test_saved_multiply_dataset - AssertionError: Del...
+FAILED tests/test_save_load.py::test_load_model - NotImplementedError
+FAILED tests/test_save_load.py::test_save_load_model - NotImplementedError
+FAILED tests/test_save_load.py::test_continue_training - NotImplementedError
+FAILED tests/test_trainer.py::test_trainer_basics - NotImplementedError
+============================== 10 failed in 3.99s ==============================
