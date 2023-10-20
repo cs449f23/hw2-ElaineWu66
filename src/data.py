@@ -13,10 +13,11 @@ class AddDataset(torch.utils.data.Dataset):
         self.num_examples = num_examples
         data = np.random.randint(-1000, 1000, size=[num_examples, 2])
         label = data.sum(axis=1, keepdims=True)
-
         # TODO Convert to torch tensors and save these as class variables
         #      so we can load them with self.__getitem__
-        raise NotImplementedError
+        self.data = torch.tensor(data, dtype=torch.float32)
+        self.label = torch.tensor(label, dtype=torch.float32)
+        # raise NotImplementedError
 
     def __len__(self):
         return self.num_examples
@@ -30,6 +31,7 @@ class AddDataset(torch.utils.data.Dataset):
             x: the data tensor
             y: the label tensor
         """
+        return self.data[item_index],self.label[item_index]
         raise NotImplementedError
 
 
@@ -47,7 +49,9 @@ class MultiplyDataset(torch.utils.data.Dataset):
 
         # TODO Convert to torch tensors and save these as class variables
         #      so we can load them with self.__getitem__
-        raise NotImplementedError
+        self.data = torch.tensor(data, dtype=torch.float32)
+        self.label = torch.tensor(label, dtype=torch.float32)
+        # raise NotImplementedError
 
     def __len__(self):
         return self.num_examples
@@ -59,4 +63,5 @@ class MultiplyDataset(torch.utils.data.Dataset):
             x: the data tensor
             y: the label tensor
         """
-        raise NotImplementedError
+        return self.data[item_index],self.label[item_index]
+        # raise NotImplementedError

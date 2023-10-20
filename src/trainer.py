@@ -40,7 +40,23 @@ class Trainer:
         Returns
             loss: the model's loss on this batch
         """
-        raise NotImplementedError
+        if train:
+            self.model.train()
+            self.optimizer.zero_grad()
+        else:
+            self.model.eval()
+
+
+        predictions = self.model(x)
+
+        loss = self.loss_func(predictions, y)
+
+        if train:
+            loss.backward()
+            self.optimizer.step()
+
+        return loss.item()
+        # raise NotImplementedError
 
     def run_one_epoch(self, data_loader: torch.utils.data.DataLoader,
                         train=True, verbose=False):
@@ -133,7 +149,16 @@ class Trainer:
         Args
             filename: the file to which to save the trainer
         """
-        raise NotImplementedError
+
+        trainer_state = {
+            'optimizer_state': self.optimizer.state_dict(),
+            'model_state': self.model.state_dict(),
+            'loss_func': self.loss_func,
+            'epoch': self.epoch,
+        }
+
+        save(filename,**trainer_state)
+        # raise NotImplementedError
 
     def load_trainer(self, filename):
         """
@@ -147,4 +172,21 @@ class Trainer:
         Args
             filename: the file from which to load the model
         """
-        raise NotImplementedError
+
+
+        # raise NotImplementedError
+
+        trainer_state = load(filename)
+
+        self.optimizer.load_state_dict(trainer_state['optimizer_state'])
+
+        self.model.load_state_dict(trainer_state['model_state'])
+
+        self.loss_func = trainer_state['loss_func']
+
+        self.epoch = trainer_state['epoch']
+
+        if self.model.training:
+            self.model.train()
+        else:
+            self.model.eval()
