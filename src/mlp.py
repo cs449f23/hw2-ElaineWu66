@@ -1,4 +1,5 @@
 import torch
+import torch.nn.init as init
 
 from src.utils import save, load
 
@@ -35,7 +36,12 @@ class MLP(torch.nn.Module):
         Initialize all the model's weights.
         See https://pytorch.org/docs/stable/nn.init.html
         """
-        raise NotImplementedError
+        for layer in self.net:
+            if isinstance(layer, torch.nn.Linear):
+                init.xavier_uniform_(layer.weight)
+                init.zeros_(layer.bias)        
+        # raise NotImplementedError
+
 
     def save_model(self, filename):
         """
@@ -46,7 +52,16 @@ class MLP(torch.nn.Module):
         Args
             filename: the file to which to save the model
         """
-        raise NotImplementedError
+        model_state = {
+            'state_dict': self.state_dict(), 
+        }
+
+        # print("Model's state_dict:")
+        # for param_tensor in model_state['state_dict']:
+        #     print(param_tensor, "\t", model_state['state_dict'][param_tensor].size())
+
+        save(filename,**model_state)
+        # raise NotImplementedError
 
     def load_model(self, filename):
         """
@@ -58,4 +73,8 @@ class MLP(torch.nn.Module):
         Args
             filename: the file from which to load the model
         """
-        raise NotImplementedError
+        model_state = load(filename)
+    
+        self.load_state_dict(model_state['state_dict'])
+        self.eval()
+        # raise Not ImplementedError

@@ -11,13 +11,29 @@ def params_add_dataset():
         trainer_args: a dictionary of arguments to be passed to Trainer()
     """
 
-    model_args = {}
-    raise NotImplementedError
+
+    # raise NotImplementedError
 
     # Don't include 'model' or 'loss_func' here
     # Just "optimizer" and any necessary kwargs
-    trainer_args = {}
-    raise NotImplementedError
+
+
+    # Define the model arguments
+    model_args = {
+        'number_of_hidden_layers': 3,  
+        'input_size': 2,               
+        'hidden_size': 64,             
+        'activation': torch.nn.ReLU()  
+    }
+
+    trainer_args = {
+        'optimizer': torch.optim.Adam,  
+        # 'optimizer_kwargs': {'lr': 0.001}, 
+        # 'batch_size': 32,            
+        # 'num_epochs': 100            
+    }
+
+    # raise NotImplementedError
 
     return model_args, trainer_args
 
@@ -32,12 +48,18 @@ def params_multiply_dataset():
         trainer_args: a dictionary of arguments to be passed to Trainer()
     """
 
-    model_args = {}
-    raise NotImplementedError
+    model_args = {
+        'number_of_hidden_layers': 3,  
+        'input_size': 2,               
+        'hidden_size': 64,            
+        'activation': torch.nn.ReLU()  
+    }
 
-    # Don't include 'model' or 'loss_func' here
-    # Just "optimizer" and any necessary kwargs
-    trainer_args = {}
-    raise NotImplementedError
+    trainer_args = {
+        'optimizer': torch.optim.Adam,  
+        # 'optimizer_kwargs': {'lr': 0.001},  
+        # 'batch_size': 32,              
+        # 'num_epochs': 100             
+    }
 
     return model_args, trainer_args
