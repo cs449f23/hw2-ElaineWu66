@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-7.4.2, pluggy-1.3.0
+rootdir: /workspace
+collected 10 items
+tests/test_a_setup.py .                                                  [ 10%]
+tests/test_data.py .                                                     [ 20%]
+tests/test_model.py ....                                                 [ 60%]
+tests/test_save_load.py ...                                              [ 90%]
+tests/test_trainer.py .                                                  [100%]
+============================== 10 passed in 6.58s ==============================
