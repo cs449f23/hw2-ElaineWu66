@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-7.4.2, pluggy-1.3.0
+rootdir: /workspace
+collected 10 items / 9 deselected / 1 selected
+tests/test_a_setup.py .
+======================
+Output of autograder
+======================
+# of tests:	1/1 tests passed
+Overall score:	100/100
+======================
+======================
+======================= 1 passed, 9 deselected in 3.90s ========================
